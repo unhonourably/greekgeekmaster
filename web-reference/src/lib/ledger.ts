@@ -1,0 +1,30 @@
+export const LEDGER_KIND_LABEL: Record<string, string> = {
+  assessment: "Charge",
+  assessment_void: "Charge voided",
+  payment: "Online payment",
+  offline_payment: "Offline payment",
+  platform_fee: "Platform fee",
+  processing_fee: "Stripe processing fee",
+  credit: "Credit",
+  late_fee: "Late fee",
+  refund: "Refund",
+  platform_fee_refund: "Platform fee returned",
+  dispute_withdrawal: "Dispute opened",
+  dispute_reinstatement: "Dispute won",
+  dispute_fee: "Dispute fee",
+  dispute_lost: "Dispute lost",
+  payout: "Payout to bank",
+  payout_reversal: "Payout reversed",
+};
+
+export const LEDGER_ACCOUNT_LABEL: Record<string, string> = {
+  member_receivable: "Member receivables",
+  dues_revenue: "Dues revenue",
+  stripe_balance: "Stripe balance",
+  cash_on_hand: "Cash and checks",
+  bank_deposits: "Bank deposits",
+  platform_fees: "Platform fees",
+  processing_fees: "Processing fees",
+  credits_issued: "Credits issued",
+  disputed_funds: "Disputed funds",
+};

@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #000000;
+  --color-surface: #0f0f0f;
+  --color-subtle: #1a1a1a;
+  --color-line: #262626;
+  --color-line-strong: #383838;
+  --color-ink: #f4ece0;
+  --color-ink-2: #bdb5a8;
+  --color-ink-3: #8a8378;
+  --color-accent: #e0a535;
+  --color-accent-hover: #ecb950;
+  --color-accent-soft: #2a1f0b;
+  --color-on-accent: #0a0a0a;
+  --color-gold: #e9c46a;
+  --color-gold-soft: #2b2312;
+  --color-positive: #63c08a;
+  --color-positive-soft: #0f2418;
+  --color-warning: #eba94a;
+  --color-warning-soft: #2b1e0c;
+  --color-danger: #f07167;
+  --color-danger-soft: #2e1210;
+  --color-info: #7cb2e8;
+  --color-info-soft: #0f1d2c;
+  --font-sans: var(--font-app-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-app-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-app-mono), ui-monospace, monospace;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --color-canvas: #ffffff;
+    --color-surface: #ffffff;
+    --color-subtle: #f2f2f2;
+    --color-line: #dddddd;
+    --color-line-strong: #c4c4c4;
+    --color-ink: #111111;
+    --color-ink-2: #444444;
+    --color-ink-3: #6b6b6b;
+    --color-accent: #8a5d0c;
+  }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes veil-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@utility bubble-in {
+  animation: bubble-in 320ms cubic-bezier(0.18, 0.89, 0.32, 1.15) both;
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rich-content :where(p, div, ul, ol, blockquote, h2, h3) {
+  margin-top: 0.65em;
+}
+
+.rich-content :where(ul) {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.rich-content :where(ol) {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.rich-content :where(blockquote) {
+  border-left: 2px solid var(--color-line-strong);
+  padding-left: 0.75rem;
+  color: var(--color-ink-2);
+}
+
+.rich-content :where(a) {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rich-content :where(h2) {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.rich-content :where(h3) {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.rich-content :where(img) {
+  max-width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+[contenteditable].rich-content:empty:before {
+  content: attr(data-placeholder);
+  color: var(--color-ink-3);
+}
+
+@utility fade-up {
+  animation: fade-up 200ms ease-out both;
+}
+
+@utility veil-in {
+  animation: veil-in 160ms ease-out both;
+}
+
+@utility dialog-in {
+  animation: dialog-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility step-in {
+  animation: step-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes check-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-12deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility check-pop {
+  animation: check-pop 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility chip-in {
+  animation: fade-up 160ms ease-out both;
+}
+
+@utility typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-dot {
+    animation: none !important;
+    opacity: 0.6;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
